@@ -1,20 +1,69 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [class]="backgroundClass" class="home-content">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <!-- Header -->
+  <div class="header" style="padding:30px;">
+    <div>
+      <h2>{{ weather?.name }}, {{ weather?.sys?.country }}</h2>
+      <p>{{ currentDate }}</p>
+    </div>
+   <p style="color:#fff;" (click)="openMenu()"><ion-icon name="menu-outline" size="large"></ion-icon></p>
   </div>
+
+  <div class="search-container" style="position: relative; bottom:40px;">
+    <ion-searchbar
+     placeholder="Search Locations..."
+     mode="ios"
+     showCancelButton="focus"
+     animated="true"
+     (ionSearch)="onSearch($event)"
+    (ionChange)="onSearch($event)">
+</ion-searchbar>
+  </div>
+
+  <!-- Current Weather -->
+  <div class="current-weather" style="padding:30px;">
+    <img [src]="weatherIconUrl" alt="Weather Icon" class="weather-icon" />
+    <h1 style="color: #fff;">{{ weather?.main?.temp | number:'1.0-0' }}°</h1>
+    <p style="color: #fff;">{{ weather?.weather[0]?.description | titlecase }}</p>
+    <div class="temp-range">
+      <span style="color: #fff;">High: {{ weather?.main?.temp_max | number:'1.0-0' }}°C</span>
+      <span style="color:#fff;">Low: {{ weather?.main?.temp_min | number:'1.0-0' }}°C</span>
+    </div>
+  </div>
+
+  <!-- Weather Details -->
+  <div class="weather-details" style="padding:30px;">
+    <div>
+      <p style="color: #fff;">Humidity</p>
+      <h3 style="color: #fff;">{{ weather?.main?.humidity }}%</h3>
+    </div>
+    <div>
+      <p style="color: #fff;">Wind</p>
+      <h3 style="color: #fff;">{{ weather?.wind?.speed }} km/h</h3>
+    </div>
+    <div>
+      <p style="color: #fff;">Rain</p>
+      <h3 style="color: #fff;">{{ rainPercentage }}%</h3>
+    </div>
+  </div>
+
+<!-- Hourly Forecast -->
+<div class="hourly-forecast">
+  <div *ngFor="let hour of hourlyData" class="hour-card">
+    <p class="hour-time" style="color: #fff;">{{ hour.time }}</p>
+    <ion-icon [name]="hour.icon" class="hour-icon"></ion-icon>
+    <p class="hour-temp" style="color: #fff;">{{ hour.temp }}°</p>
+  </div>
+</div>
+
+  <!-- 7-Day Forecast -->
+  <div class="seven-day" style="padding:30px;">
+    <h2 style="color: #fff;">7-Day Forecast</h2>
+    <div class="day" *ngFor="let day of dailyData">
+      <span style="color: #fff;">{{ day.name }}</span>
+      <span style="color: #fff;">{{ day.temp }}°C</span>
+      <span style="color: #fff;">{{ day.condition }}</span>
+    </div>
+  </div>
+
 </ion-content>

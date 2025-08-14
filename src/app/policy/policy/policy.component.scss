@@ -1,0 +1,21 @@
+.policy-content {
+  background: #f5f7fa;
+}
+
+.policy-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 16px;
+
+  ion-card-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #4caf50;
+  }
+
+  ion-card-content {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+  }
+}

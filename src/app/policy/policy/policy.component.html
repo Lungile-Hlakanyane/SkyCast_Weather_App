@@ -1,0 +1,16 @@
+<ion-content class="ion-padding policy-content">
+  <div class="action-back-container" style="display: flex; gap:15px;">
+    <p style="color:#4caf50; font-weight: bold; font-size:25px;" 
+    (click)="goBack()"><ion-icon name="arrow-back-outline"></ion-icon></p>
+    <p style="font-size:25px;color:#4caf50; font-weight: bold;">Policy</p>
+  </div>
+
+  <ion-card *ngFor="let policy of policies" class="policy-card">
+    <ion-card-header>
+      <ion-card-title>{{ policy.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ policy.content }}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

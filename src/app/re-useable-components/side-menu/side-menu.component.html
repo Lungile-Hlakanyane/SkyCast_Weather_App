@@ -1,0 +1,44 @@
+<ion-content class="menu-content">
+
+  <div class="action-btn-container" style="display: flex; justify-content: space-between; padding: 15px;">
+    <p style="color:#4caf50; font-weight: bold; font-size:35px;">Menu</p>
+    <p style="cursor:pointer; font-size:30px; font-weight: bold; color:#4caf50;">
+      <ion-icon name="close-circle-outline" (click)="closeMenu()"></ion-icon>
+    </p>
+  </div>
+
+  <ion-list class="menu-list">
+
+    <ion-item lines="none" button (click)="navigate('/home')">
+      <ion-icon name="home-outline" slot="start" class="menu-icon"></ion-icon>
+      <ion-label class="menu-label">Home</ion-label>
+    </ion-item>
+
+    <ion-item lines="none" button (click)="navigate('/weather-map')">
+      <ion-icon name="map-outline" slot="start" class="menu-icon"></ion-icon>
+      <ion-label class="menu-label">Weather Map</ion-label>
+    </ion-item>
+
+    <ion-item lines="none" button (click)="navigate('/saved-locations')">
+      <ion-icon name="compass-outline" slot="start" class="menu-icon"></ion-icon>
+      <ion-label class="navigate-circle-outline">Saved Locations</ion-label>
+    </ion-item>
+   
+    <ion-item lines="none" button (click)="navigate('/settings')">
+      <ion-icon name="settings-outline" slot="start" class="menu-icon"></ion-icon>
+      <ion-label class="menu-label">Settings</ion-label>
+    </ion-item>
+
+    <ion-item lines="none" button (click)="navigate('/policy')">
+      <ion-icon name="map-outline" slot="start" class="menu-icon"></ion-icon>
+      <ion-label class="document-text-outline">Policy</ion-label>
+    </ion-item>
+
+    <ion-item lines="none" button style="margin-top:250px;">
+      <ion-icon name="exit-outline" slot="start" class="menu-icon"></ion-icon>
+      <ion-label class="menu-label">Exit</ion-label>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

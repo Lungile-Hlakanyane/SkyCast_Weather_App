@@ -35,3 +35,34 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+.side-menu-modal {
+  --width: 250px;
+  --height: 100%;
+  --border-radius: 0;
+  --box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.2);
+  align-items: flex-start; /* stick to top */
+  justify-content: flex-start; /* stick to left */
+}
+
+.side-menu-modal .modal-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--width);
+  border-radius: 0;
+  background: #1e1e1e;
+  color: white;
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+

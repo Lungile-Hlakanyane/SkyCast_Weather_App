@@ -1,0 +1,38 @@
+<ion-content class="ion-padding settings-content">
+
+  <!-- Back Header -->
+  <div class="action-back-container" style="display: flex; gap:15px;">
+    <p style="color:#4caf50; font-weight: bold; font-size:25px;" 
+       (click)="goBack()">
+       <ion-icon name="arrow-back-outline"></ion-icon>
+    </p>
+    <p style="font-size:25px;color:#4caf50; font-weight: bold;">Settings</p>
+  </div>
+
+  <!-- Settings Options -->
+  <ion-card class="settings-card">
+    <ion-item>
+      <ion-label>Dark Mode</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="darkMode" (ionChange)="toggleDarkMode()"></ion-toggle>
+    </ion-item>
+  </ion-card>
+
+  <ion-card class="settings-card">
+    <ion-item button detail="true">
+      <ion-label>Account</ion-label>
+    </ion-item>
+  </ion-card>
+
+  <ion-card class="settings-card">
+    <ion-item button detail="true">
+      <ion-label>Notifications</ion-label>
+    </ion-item>
+  </ion-card>
+
+  <ion-card class="settings-card" (click)="navigate('/about')">
+    <ion-item button detail="true">
+      <ion-label>About</ion-label>
+    </ion-item>
+  </ion-card>
+
+</ion-content>

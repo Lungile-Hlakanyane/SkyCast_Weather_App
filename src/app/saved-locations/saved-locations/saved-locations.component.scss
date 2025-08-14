@@ -1,0 +1,64 @@
+ion-content {
+  --background: #fff;
+  color: white;
+}
+
+.weather-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+}
+
+.weather-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 18px;
+  color: white;
+  background-size: cover;
+  background-position: center;
+}
+
+.weather-card.night {
+  background: linear-gradient(180deg, #0f2027, #203a43, #2c5364);
+}
+
+.weather-card.cloudy {
+  background: linear-gradient(180deg, #232526, #414345);
+}
+
+.weather-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.city {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.time {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.condition {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.temp-info {
+  text-align: right;
+}
+
+.temp {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.range {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
