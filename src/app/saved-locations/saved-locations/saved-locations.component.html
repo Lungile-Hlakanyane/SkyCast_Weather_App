@@ -7,9 +7,17 @@
   </div>
 
   <!-- Search Bar -->
-  <div class="search-container" style="position: relative; bottom:10px;">
-    <ion-searchbar placeholder="Search location..." mode="ios" animated="true"></ion-searchbar>
-  </div>
+ <div class="search-container" style="position: relative; bottom:10px;">
+  <ion-searchbar
+    placeholder="Search location..."
+    mode="ios"
+    animated="true"
+    [(ngModel)]="searchCity"
+    (ionInput)="searchWeather()"
+    (ionClear)="clearSearch()">
+  </ion-searchbar>
+</div>
+
 
   <!-- Weather Cards -->
   <div class="weather-list">

@@ -3,18 +3,20 @@ import { IonicModule } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { Weather } from 'src/app/services/weather-service/weather';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-saved-locations',
   templateUrl: './saved-locations.component.html',
   styleUrls: ['./saved-locations.component.scss'],
-  imports: [IonicModule, CommonModule],
+  imports: [IonicModule, CommonModule, FormsModule],
   standalone: true
 })
 export class SavedLocationsComponent  implements OnInit {
 
   weatherData: any = null;
   isLoading = true;
+  searchCity: string = ''; 
 
   constructor(
     private navController: NavController,
@@ -23,12 +25,14 @@ export class SavedLocationsComponent  implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.etchBloemfonteinWeather();
+    this.fetchWeather('Bloemfontein'); 
   }
 
-   etchBloemfonteinWeather() {
+    fetchWeather(city: string) {
+    if (!city) return;
+
     this.isLoading = true;
-    this.weatherService.getCurrentWeather('Bloemfontein').subscribe({
+    this.weatherService.getCurrentWeather(city).subscribe({
       next: (data) => {
         this.weatherData = {
           city: data.name,
@@ -42,11 +46,23 @@ export class SavedLocationsComponent  implements OnInit {
         this.cdr.detectChanges();
       },
       error: (err) => {
-        console.error('Error fetching weather for Bloemfontein:', err);
+        console.error(`Error fetching weather for ${city}:`, err);
         this.isLoading = false;
+        this.weatherData = null;
         this.cdr.detectChanges();
       }
     });
+  }
+
+  searchWeather() {
+    if (this.searchCity.trim() !== '') {
+      this.fetchWeather(this.searchCity.trim());
+    }
+  }
+
+  clearSearch() {
+    this.searchCity = '';
+    this.fetchWeather('Bloemfontein'); // default
   }
 
   goBack(){
