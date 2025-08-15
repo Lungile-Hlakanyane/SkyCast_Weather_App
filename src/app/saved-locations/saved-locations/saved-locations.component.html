@@ -1,9 +1,9 @@
 <ion-content>
 
-   <div class="action-back-container" style="display: flex; gap:15px; padding:15px;">
+  <div class="action-back-container" style="display: flex; gap:15px; padding:15px;">
     <p style="color:#4caf50; font-weight: bold; font-size:25px;" 
-    (click)="goBack()"><ion-icon name="arrow-back-outline"></ion-icon></p>
-    <p style="font-size:25px;color:#4caf50; font-weight: bold;">Saved</p>
+       (click)="goBack()"><ion-icon name="arrow-back-outline"></ion-icon></p>
+    <p style="font-size:25px;color:#4caf50; font-weight: bold;">Saved Locations</p>
   </div>
 
   <!-- Search Bar -->
@@ -13,40 +13,23 @@
 
   <!-- Weather Cards -->
   <div class="weather-list">
-    <div class="weather-card night">
+    
+    <div class="weather-card night" *ngIf="!isLoading && weatherData; else loading">
       <div class="weather-info">
-        <h2 class="city">Bloemfontein</h2>
-        <p class="time">22:21</p>
-        <p class="condition">Partly Cloudy</p>
+        <h2 class="city">{{ weatherData.city }}</h2>
+        <p class="time">{{ weatherData.time }}</p>
+        <p class="condition">{{ weatherData.condition }}</p>
       </div>
       <div class="temp-info">
-        <h1 class="temp">13°</h1>
-        <p class="range">H:23° L:6°</p>
+        <h1 class="temp">{{ weatherData.temp }}°</h1>
+        <p class="range">H:{{ weatherData.high }}° L:{{ weatherData.low }}°</p>
       </div>
     </div>
 
-    <div class="weather-card night">
-      <div class="weather-info">
-        <h2 class="city">Johannesburg</h2>
-        <p class="time">22:21</p>
-        <p class="condition">Clear</p>
-      </div>
-      <div class="temp-info">
-        <h1 class="temp">13°</h1>
-        <p class="range">H:22° L:8°</p>
-      </div>
-    </div>
+    <ng-template #loading>
+      <p style="text-align:center; padding:20px;">Loading weather data...</p>
+    </ng-template>
 
-    <div class="weather-card cloudy">
-      <div class="weather-info">
-        <h2 class="city">Cape Town</h2>
-        <p class="time">22:21</p>
-        <p class="condition">Cloudy</p>
-      </div>
-      <div class="temp-info">
-        <h1 class="temp">14°</h1>
-        <p class="range">H:15° L:12°</p>
-      </div>
-    </div>
   </div>
+
 </ion-content>

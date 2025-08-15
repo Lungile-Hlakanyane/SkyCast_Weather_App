@@ -16,7 +16,6 @@ export class SavedLocationsComponent  implements OnInit {
   weatherData: any = null;
   isLoading = true;
 
-
   constructor(
     private navController: NavController,
     private weatherService: Weather,
